@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pymrio.IOSystem.set_regions &mdash; pymrio 0.2.0 documentation</title>
+    <title>pymrio.IOSystem.reset_to_flows &mdash; pymrio 0.2.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="pymrio 0.2.0 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="../api_references.html" />
-    <link rel="next" title="pymrio.IOSystem.set_sectors" href="pymrio.IOSystem.set_sectors.html" />
-    <link rel="prev" title="pymrio.parse_exio_ext" href="pymrio.parse_exio_ext.html" />
+    <link rel="next" title="pymrio.IOSystem.reset_to_coefficients" href="pymrio.IOSystem.reset_to_coefficients.html" />
+    <link rel="prev" title="pymrio.Extension.plot_account" href="pymrio.Extension.plot_account.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -45,10 +45,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="pymrio.IOSystem.set_sectors.html" title="pymrio.IOSystem.set_sectors"
+          <a href="pymrio.IOSystem.reset_to_coefficients.html" title="pymrio.IOSystem.reset_to_coefficients"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="pymrio.parse_exio_ext.html" title="pymrio.parse_exio_ext"
+          <a href="pymrio.Extension.plot_account.html" title="pymrio.Extension.plot_account"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">pymrio 0.2.0 documentation</a> &raquo;</li>
           <li><a href="../api_references.html" accesskey="U">API Reference</a> &raquo;</li> 
@@ -60,25 +60,16 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="pymrio-iosystem-set-regions">
-<h1>pymrio.IOSystem.set_regions<a class="headerlink" href="#pymrio-iosystem-set-regions" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pymrio-iosystem-reset-to-flows">
+<h1>pymrio.IOSystem.reset_to_flows<a class="headerlink" href="#pymrio-iosystem-reset-to-flows" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
-<dt id="pymrio.IOSystem.set_regions">
-<tt class="descclassname">IOSystem.</tt><tt class="descname">set_regions</tt><big>(</big><em>regions</em><big>)</big><a class="headerlink" href="#pymrio.IOSystem.set_regions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets new names for the regions</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>regions</strong> : list or dict</p>
-<blockquote class="last">
-<div><p>In case of dict: {&#8216;old_name&#8217; :  &#8216;new_name&#8217;} with a entry for each old_name which should be renamed
-In case of list: List of new names in order and complete without repetition</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dt id="pymrio.IOSystem.reset_to_flows">
+<tt class="descclassname">IOSystem.</tt><tt class="descname">reset_to_flows</tt><big>(</big><big>)</big><a class="headerlink" href="#pymrio.IOSystem.reset_to_flows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keeps only the absolute values.</p>
+<p>This removes all attributes which can not be aggregated and must be
+recalculated after the aggregation.</p>
+<p>Development note: The attributes which should be removed are
+defined in self.__non_agg_attributes__</p>
 </dd></dl>
 
 </div>
@@ -90,11 +81,11 @@ In case of list: List of new names in order and complete without repetition</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="pymrio.parse_exio_ext.html"
-                        title="previous chapter">pymrio.parse_exio_ext</a></p>
+  <p class="topless"><a href="pymrio.Extension.plot_account.html"
+                        title="previous chapter">pymrio.Extension.plot_account</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="pymrio.IOSystem.set_sectors.html"
-                        title="next chapter">pymrio.IOSystem.set_sectors</a></p>
+  <p class="topless"><a href="pymrio.IOSystem.reset_to_coefficients.html"
+                        title="next chapter">pymrio.IOSystem.reset_to_coefficients</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -119,10 +110,10 @@ In case of list: List of new names in order and complete without repetition</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="pymrio.IOSystem.set_sectors.html" title="pymrio.IOSystem.set_sectors"
+          <a href="pymrio.IOSystem.reset_to_coefficients.html" title="pymrio.IOSystem.reset_to_coefficients"
              >next</a> |</li>
         <li class="right" >
-          <a href="pymrio.parse_exio_ext.html" title="pymrio.parse_exio_ext"
+          <a href="pymrio.Extension.plot_account.html" title="pymrio.Extension.plot_account"
              >previous</a> |</li>
         <li><a href="../index.html">pymrio 0.2.0 documentation</a> &raquo;</li>
           <li><a href="../api_references.html" >API Reference</a> &raquo;</li> 

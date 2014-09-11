@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pymrio.IOSystem.set_regions &mdash; pymrio 0.2.0 documentation</title>
+    <title>pymrio.parse_exio_ext &mdash; pymrio 0.2.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="pymrio 0.2.0 documentation" href="../index.html" />
     <link rel="up" title="API Reference" href="../api_references.html" />
-    <link rel="next" title="pymrio.IOSystem.set_sectors" href="pymrio.IOSystem.set_sectors.html" />
-    <link rel="prev" title="pymrio.parse_exio_ext" href="pymrio.parse_exio_ext.html" />
+    <link rel="next" title="pymrio.IOSystem.set_regions" href="pymrio.IOSystem.set_regions.html" />
+    <link rel="prev" title="pymrio.IOSystem.remove_extension" href="pymrio.IOSystem.remove_extension.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -45,10 +45,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="pymrio.IOSystem.set_sectors.html" title="pymrio.IOSystem.set_sectors"
+          <a href="pymrio.IOSystem.set_regions.html" title="pymrio.IOSystem.set_regions"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="pymrio.parse_exio_ext.html" title="pymrio.parse_exio_ext"
+          <a href="pymrio.IOSystem.remove_extension.html" title="pymrio.IOSystem.remove_extension"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">pymrio 0.2.0 documentation</a> &raquo;</li>
           <li><a href="../api_references.html" accesskey="U">API Reference</a> &raquo;</li> 
@@ -60,25 +60,69 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="pymrio-iosystem-set-regions">
-<h1>pymrio.IOSystem.set_regions<a class="headerlink" href="#pymrio-iosystem-set-regions" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
-<dt id="pymrio.IOSystem.set_regions">
-<tt class="descclassname">IOSystem.</tt><tt class="descname">set_regions</tt><big>(</big><em>regions</em><big>)</big><a class="headerlink" href="#pymrio.IOSystem.set_regions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets new names for the regions</p>
+  <div class="section" id="pymrio-parse-exio-ext">
+<h1>pymrio.parse_exio_ext<a class="headerlink" href="#pymrio-parse-exio-ext" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="pymrio.parse_exio_ext">
+<tt class="descclassname">pymrio.</tt><tt class="descname">parse_exio_ext</tt><big>(</big><em>file</em>, <em>index_col</em>, <em>name</em>, <em>drop_compartment=True</em>, <em>version=None</em>, <em>year=None</em>, <em>iosystem=None</em>, <em>sep='</em>, <em>'</em><big>)</big><a class="headerlink" href="#pymrio.parse_exio_ext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse an EXIOBASE like extension file into pymrio.Extension</p>
+<p>EXIOBASE like extensions files are assumed to have two
+rows which are used as columns multiindex (region and sector)
+and up to three columns for the row index (see Parameters).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>regions</strong> : list or dict</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>file</strong> : string</p>
+<blockquote>
+<div><p>File to parse</p>
+</div></blockquote>
+<p><strong>index_col</strong> : int</p>
+<blockquote>
+<div><p>The number of columns (1 to 3) at the beginning of the file
+to use as the index. The order of the index_col must be
+- 1 index column: [&#8216;stressor&#8217;]
+- 2 index columns: [&#8216;stressor&#8217;, &#8216;unit&#8217;]
+- 3 index columns: [&#8216;stressor&#8217;, &#8216;compartment&#8217;, &#8216;unit&#8217;]
+- &gt; 3: everything up to three index columns will be removed</p>
+</div></blockquote>
+<p><strong>name</strong> : string</p>
+<blockquote>
+<div><p>Name of the extension</p>
+</div></blockquote>
+<p><strong>drop_compartment</strong> : boolean, optional</p>
+<blockquote>
+<div><p>If True (default) removes the compartment from the index.</p>
+</div></blockquote>
+<p><strong>version</strong> : string, optional</p>
+<blockquote>
+<div><p>see pymrio.Extension</p>
+</div></blockquote>
+<p><strong>iosystem</strong> : string, optional</p>
+<blockquote>
+<div><p>see pymrio.Extension</p>
+</div></blockquote>
+<p><strong>year</strong> : string or int</p>
+<blockquote>
+<div><p>see pymrio.Extension</p>
+</div></blockquote>
+<p><strong>sep</strong> : string, optional</p>
+<blockquote>
+<div><p>Delimiter to use; default &#8216;,&#8217;</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">pymrio.Extension</p>
 <blockquote class="last">
-<div><p>In case of dict: {&#8216;old_name&#8217; :  &#8216;new_name&#8217;} with a entry for each old_name which should be renamed
-In case of list: List of new names in order and complete without repetition</p>
+<div><p>with F (and unit if available)</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>So far this only parses factor of production extensions F (not 
+final demand extensions FY nor coeffiecents S).</p>
 </dd></dl>
 
 </div>
@@ -90,11 +134,11 @@ In case of list: List of new names in order and complete without repetition</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="pymrio.parse_exio_ext.html"
-                        title="previous chapter">pymrio.parse_exio_ext</a></p>
+  <p class="topless"><a href="pymrio.IOSystem.remove_extension.html"
+                        title="previous chapter">pymrio.IOSystem.remove_extension</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="pymrio.IOSystem.set_sectors.html"
-                        title="next chapter">pymrio.IOSystem.set_sectors</a></p>
+  <p class="topless"><a href="pymrio.IOSystem.set_regions.html"
+                        title="next chapter">pymrio.IOSystem.set_regions</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -119,10 +163,10 @@ In case of list: List of new names in order and complete without repetition</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="pymrio.IOSystem.set_sectors.html" title="pymrio.IOSystem.set_sectors"
+          <a href="pymrio.IOSystem.set_regions.html" title="pymrio.IOSystem.set_regions"
              >next</a> |</li>
         <li class="right" >
-          <a href="pymrio.parse_exio_ext.html" title="pymrio.parse_exio_ext"
+          <a href="pymrio.IOSystem.remove_extension.html" title="pymrio.IOSystem.remove_extension"
              >previous</a> |</li>
         <li><a href="../index.html">pymrio 0.2.0 documentation</a> &raquo;</li>
           <li><a href="../api_references.html" >API Reference</a> &raquo;</li> 
